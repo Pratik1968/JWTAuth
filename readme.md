@@ -18,10 +18,10 @@ Setup
     
 Clone the repository:
   
-    git clone https://github.com/your_username/simple-jwt-authsystem.git
+    git clone https://github.com/Pratik1968/JWTAuth.git
 Navigate to the project directory:
 
-    cd simple-jwt-authsystem
+    cd JWTAuth
 
 Build the Docker container:
     
@@ -65,9 +65,7 @@ Once the application is running, you can use the following endpoints:
 
 
 
-Contributing
+## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
-License
+  Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-This project is licensed under the MIT License. 
