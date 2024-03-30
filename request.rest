@@ -1,0 +1,28 @@
+
+
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+  "NAME": "John",
+  "LAST_NAME": "Doe",
+  "EMAIL": "+john.d+o++e@ex.a++mm++p++le.co,m",
+  "PASSWORD": "password",
+  "TERMS_AND_CONDITION": true
+}
+###
+
+POST http://localhost:3000/api/auth/signin
+Content-Type: application/json
+
+{
+  "EMAIL": "+john.d+o++e@ex.a++mm++p++le.co,m",
+  "PASSWORD": "password"
+  
+}
+
+###
+GET http://localhost:3000/api/test HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs++InR5cCI6IkpXVCJ9.eyJFTUFJTCI6Iitqb2huLmQrbysrZUBleC5hKyttbSsrcCsrbGUuY28sbSIsIlBBU1NXT1JEIjoiJDJiJDEwJEdySWhVN2h4YXNibVgzVWRHb3NDYi5tdU5KNGpnaUtZLmlrR29nb1ptZVRpZWFRWktJTXVHIiwiaWF0IjoxNzExNzkwNzIxLCJleHAiOjE3MTE4NzcxMjF9.X_nbcoIKTNJk2EtFnbGXTTq-4pH-KIO5Nj5OATlpr-Q
+Content-Type: application/json
+

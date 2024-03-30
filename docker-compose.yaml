@@ -1,0 +1,57 @@
+
+
+version: "1.0"
+services:
+  # frontend:
+  #   build: ./app
+  #   ports:
+  #     - 5173:5173
+  #   volumes:
+  #     - ./app/src:/app/src
+
+  db:
+    
+    build: ./db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=pratik
+      - POSTGRES_USER=pratik
+      - POSTGRES_DB=database
+    volumes:
+      - ./db/database_data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d/
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+  server:
+    
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000' 
+    environment:
+      - SERVER_PORT=3000
+      - POSTGRES_PASSWORD=pratik
+      - POSTGRES_USER=pratik
+      - POSTGRES_DB=database
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=db 
+      - NODE_ENV=development
+      - ACCESS_TOKEN_EXPIRE_TIME=1d
+      - ACCESS_TOKEN=e19f1235944f4fdabd0a9bca990531f325640ba3f09fd4ea1f9d346df7141c30660886fca7b640d280aea6179ca0f55a559ac2d3505101e5858b0f04a275b45b
+      - REFRESH_ACCESS_TOKEN=af388953c4f3bccca0bffe11f4f77ba1068c2c3973ebc90414d62d4e6760fa59efbad6edee60100242f8f9d3e155855f9ebe7fb45ab5597fb2d56b2f0add41c0
+
+    volumes:
+      - ./src:/app/src
+    
+    restart: always
+    command: npm run dev  
+    depends_on:
+      - db
+      
+volumes:
+  database_data:
+    driver: local
+
